@@ -1,8 +1,9 @@
-wireless-charging 0.3.4
+wireless-charging 0.17.4
 ===============================================================================
 CHANGES
-* Updated to wireless-charging-lib 0.2.6
+* Updated to wireless-charging-lib 0.17.3
 * Updated for 0.17 by GTX2GvO
+* Compatebility fixes by slindenau
 
 wireless-charging 0.3.3
 ===============================================================================
