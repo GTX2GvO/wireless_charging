@@ -18,12 +18,12 @@ local charging_rail_types =
   ["wireless-charging-lo-power-induction-rail"] =
   {
     name = "wireless-charging-lo-power-induction-rail",
-    interface_name = "wireless-charging-lo-power-induction-rail-interface",
+    interface_name = "lo-power-induction-rail-interface",
   },
   ["wireless-charging-hi-power-induction-rail"] =
   {
     name = "wireless-charging-hi-power-induction-rail",
-    interface_name = "wireless-charging-hi-power-induction-rail-interface",
+    interface_name = "hi-power-induction-rail-interface",
   },
 }
 local rail_accumulator_types =
