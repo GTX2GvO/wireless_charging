@@ -36,13 +36,13 @@ script.on_init(function()
   -- We do not register the rails here because we need to make sure they aren't built diagonally
   remote.call("wireless-charging-lib", "register-inductor-entity", {
     name = "wireless-charging-lo-power-induction-station",
-    interface_name = "wireless-charging-lo-power-induction-station-interface",
+    interface_name = "lo-power-induction-station-interface",
     offset_y = 1,
     efficiency = 1,
   })
   remote.call("wireless-charging-lib", "register-inductor-entity", {
     name = "wireless-charging-hi-power-induction-station",
-    interface_name = "wireless-charging-hi-power-induction-station-interface",
+    interface_name = "hi-power-induction-station-interface",
     offset_y = 1,
     efficiency = 0.8,
   })
