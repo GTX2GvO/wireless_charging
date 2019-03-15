@@ -1,8 +1,8 @@
 {
   "name": "wireless-charging",
-  "version": "0.3.4",
+  "version": "0.17.4",
   "title": "Wireless Charging",
-  "author": "mknejp",
+  "author": "mknejp, GTX2GvO & slindenau",
   "homepage": "https://forums.factorio.com/viewtopic.php?f=93&t=31910",
   "description": "Induction stations and equipment allowing wireless charging of batteries in vehicles and armor.",
   "factorio_version": "0.17",
