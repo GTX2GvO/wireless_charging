@@ -6,6 +6,6 @@
   "homepage": "https://forums.factorio.com/viewtopic.php?f=93&t=31910",
   "description": "Induction stations and equipment allowing wireless charging of batteries in vehicles and armor.",
   "factorio_version": "0.17",
-  "dependencies": ["base >= 0.17", "wireless-charging-lib>=0.2.6"],
+  "dependencies": ["base >= 0.17", "wireless-charging-lib>=0.17.3"],
   "license": "MIT"
 }
