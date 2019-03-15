@@ -100,8 +100,10 @@ indicator_tick = function()
     local indicator = indicators[unit]
     local capacity = grid.battery_capacity
     local ratio = capacity <= 0 and 0 or 100 * grid.available_in_batteries / capacity
-    accumulator.energy = ratio
-    indicator.fluidbox[1] = {type = "lubricant" , amount = ratio}
+    if(accumulator.valid) then
+      accumulator.energy = ratio
+    end
+    --indicator.fluidbox[1] = {type = "lubricant" , amount = ratio}
   end
 end
 
