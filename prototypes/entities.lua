@@ -71,7 +71,7 @@ local function induction_rail_circuit_connector_sprite(orientation)
   return sprite
 end
 
-local function make_station(name, icon, max_health, filename)
+local function make_station(name, icon, max_health, filename, buffer_capacity, input_flow_limit)
   return {
     type = "accumulator",
     name = name,
@@ -87,9 +87,9 @@ local function make_station(name, icon, max_health, filename)
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "100J",
+      buffer_capacity = buffer_capacity,
       usage_priority = "tertiary",
-      input_flow_limit = "0W",
+      input_flow_limit = input_flow_limit,
       output_flow_limit = "0W"
     },
     charge_cooldown = 30,
@@ -121,7 +121,7 @@ local function make_station(name, icon, max_health, filename)
   }
 end
 
-local function make_rail_accumulator(orientation, name, icon, max_health, filename)
+local function make_rail_accumulator(orientation, name, icon, max_health, filename, buffer_capacity, input_flow_limit)
   local circuit_x = orientation == "horizontal" and 0.65625 or 0.6875
   local circuit_y = orientation == "horizontal" and 0.8125 or 0.0625
   return {
@@ -140,9 +140,9 @@ local function make_rail_accumulator(orientation, name, icon, max_health, filena
     energy_source =
     {
       type = "electric",
-      buffer_capacity = "100J",
+      buffer_capacity = buffer_capacity,
       usage_priority = "tertiary",
-      input_flow_limit = "0W",
+      input_flow_limit = input_flow_limit,
       output_flow_limit = "0W"
     },
     charge_cooldown = 30,
@@ -192,31 +192,43 @@ data:extend
   make_station("wireless-charging-lo-power-induction-station",
                "__wireless-charging__/graphics/icons/lo-power-induction-station.png",
                200,
-               "__wireless-charging__/graphics/entities/lo-power-induction-station.png"),
+               "__wireless-charging__/graphics/entities/lo-power-induction-station.png",
+               100 .. "kJ",
+               1 .. "kW"),
   make_station("wireless-charging-hi-power-induction-station",
                "__wireless-charging__/graphics/icons/hi-power-induction-station.png",
                300,
-               "__wireless-charging__/graphics/entities/hi-power-induction-station.png"),
+               "__wireless-charging__/graphics/entities/hi-power-induction-station.png",
+               10  .. "MJ",
+               1 .. "MW"),
   make_rail_accumulator("horizontal",
                         "wireless-charging-lo-power-induction-rail",
                         "__wireless-charging__/graphics/icons/lo-power-induction-rail.png",
                         200,
-                        "__wireless-charging__/graphics/entities/empty64.png"),
+                        "__wireless-charging__/graphics/entities/empty64.png",
+                        100 .. "kJ",
+                        1 .. "kW"),
   make_rail_accumulator("vertical",
                         "wireless-charging-lo-power-induction-rail",
                         "__wireless-charging__/graphics/icons/lo-power-induction-rail.png",
                         200,
-                        "__wireless-charging__/graphics/entities/empty64.png"),
+                        "__wireless-charging__/graphics/entities/empty64.png",
+                        100 .. "kJ",
+                        1 .. "kW"),
   make_rail_accumulator("horizontal",
                         "wireless-charging-hi-power-induction-rail",
                         "__wireless-charging__/graphics/icons/hi-power-induction-rail.png",
                         300,
-                        "__wireless-charging__/graphics/entities/empty64.png"),
+                        "__wireless-charging__/graphics/entities/empty64.png",
+                        10 .. "MJ",
+                        1 .. "MW"),
   make_rail_accumulator("vertical",
                         "wireless-charging-hi-power-induction-rail",
                         "__wireless-charging__/graphics/icons/hi-power-induction-rail.png",
                         300,
-                        "__wireless-charging__/graphics/entities/empty64.png"),
+                        "__wireless-charging__/graphics/entities/empty64.png",
+                        10 .. "MJ",
+                        1 .. "MW"),
   {
     type = "storage-tank",
     name = "wireless-charging-induction-station-indicator",
