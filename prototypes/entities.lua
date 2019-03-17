@@ -18,15 +18,23 @@ local function make_rail(name, icon, mined, ...)
       {
         type = "fire",
         percent = 100
+      },
+      {
+        type = "acid",
+        percent = 80
       }
     },
     rail_category = "regular",
-    pictures = rail_pictures(),
+    pictures = rail_pictures(), -- rail_pictures method from ~\Factorio\data\base\prototypes\entity\entities.lua
   }
   for i = 1, select("#", ...) do
     local image = select(i, ...)
     local picture = rail.pictures["straight_rail_" .. image[1]][image[2]]
     picture.filename = image[3]
+    picture.width = image[4];
+    picture.height = image[5];
+    picture.variation_count = 1; -- base uses 3 variations, we have only 1
+    picture.hr_version = nil; -- no HR graphics for now
   end
   return rail
 end
@@ -89,8 +97,9 @@ local function make_station(name, icon, max_health, filename)
       type = "electric",
       buffer_capacity = "100J",
       usage_priority = "tertiary",
-      input_flow_limit = "0W",
-      output_flow_limit = "0W"
+      input_flow_limit = "0W", -- this accumulator only copies the charge level of the grid it's charging. It is used to export that value over the circuit network
+      output_flow_limit = "0W",
+      render_no_power_icon = false
     },
     charge_cooldown = 30,
     discharge_cooldown = 60,
@@ -142,8 +151,9 @@ local function make_rail_accumulator(orientation, name, icon, max_health, filena
       type = "electric",
       buffer_capacity = "100J",
       usage_priority = "tertiary",
-      input_flow_limit = "0W",
-      output_flow_limit = "0W"
+      input_flow_limit = "0W", -- this accumulator only copies the charge level of the grid it's charging. It is used to export that value over the circuit network
+      output_flow_limit = "0W",
+      render_no_power_icon = false
     },
     charge_cooldown = 30,
     discharge_cooldown = 60,
@@ -178,17 +188,17 @@ data:extend
   make_rail("wireless-charging-lo-power-induction-rail",
             "__wireless-charging__/graphics/icons/lo-power-induction-rail.png",
             "wireless-charging-lo-power-induction-rail",
-            {"horizontal", "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "lo", "horizontal", "backplates")},
-            {"vertical",   "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "lo", "vertical", "backplates")},
-            {"horizontal", "ties",       "__wireless-charging__/graphics/entities/induction-rail-horizontal-ties.png"},
-            {"vertical",   "ties",       "__wireless-charging__/graphics/entities/induction-rail-vertical-ties.png"}),
+            {"horizontal", "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "lo", "horizontal", "backplates"), 64, 64},
+            {"vertical",   "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "lo", "vertical", "backplates"), 64, 64},
+            {"horizontal", "ties",       "__wireless-charging__/graphics/entities/induction-rail-horizontal-ties.png", 64, 64},
+            {"vertical",   "ties",       "__wireless-charging__/graphics/entities/induction-rail-vertical-ties.png", 64, 64}),
   make_rail("wireless-charging-hi-power-induction-rail",
             "__wireless-charging__/graphics/icons/hi-power-induction-rail.png",
             "wireless-charging-hi-power-induction-rail",
-            {"horizontal", "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "hi", "horizontal", "backplates")},
-            {"vertical",   "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "hi", "vertical", "backplates")},
-            {"horizontal", "ties",       "__wireless-charging__/graphics/entities/induction-rail-horizontal-ties.png"},
-            {"vertical",   "ties",       "__wireless-charging__/graphics/entities/induction-rail-vertical-ties.png"}),
+            {"horizontal", "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "hi", "horizontal", "backplates"), 64, 64},
+            {"vertical",   "backplates", string.format("__wireless-charging__/graphics/entities/%s-power-induction-rail-%s-%s.png", "hi", "vertical", "backplates"), 64, 64},
+            {"horizontal", "ties",       "__wireless-charging__/graphics/entities/induction-rail-horizontal-ties.png", 64, 64},
+            {"vertical",   "ties",       "__wireless-charging__/graphics/entities/induction-rail-vertical-ties.png", 64, 64}),
   make_station("wireless-charging-lo-power-induction-station",
                "__wireless-charging__/graphics/icons/lo-power-induction-station.png",
                200,

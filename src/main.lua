@@ -79,10 +79,14 @@ function on_charging_stopped(event)
     charging_accumulator_grids[unit] = nil
     local accumulator = accumulators[unit]
     if(accumulator) then
-      accumulator.energy = 0
+      if (accumulator.valid) then
+        accumulator.energy = 0
+      end
       local indicator = indicators[unit]
       if(indicator) then
-        indicator.fluidbox[1] = nil
+          if(indicator.valid) then
+            indicator.fluidbox[1] = nil
+          end
       end
     end
   end
@@ -99,11 +103,19 @@ indicator_tick = function()
     local accumulator = accumulators[unit]
     local indicator = indicators[unit]
     local capacity = grid.battery_capacity
-    local ratio = capacity <= 0 and 0 or 100 * grid.available_in_batteries / capacity
+    local ratio = capacity <= 0 and 0 or grid.available_in_batteries / capacity
     if(accumulator.valid) then
-      accumulator.energy = ratio
+      local accumulator_capacity = accumulator.electric_buffer_size;
+      accumulator.energy = ratio * accumulator_capacity;
     end
-    --indicator.fluidbox[1] = {type = "lubricant" , amount = ratio}
+    if(indicator.valid) then
+      if(ratio <= 0) then
+        indicator.fluidbox[1] = nil;
+      else
+        local fluidbox_capacity = indicator.fluidbox.get_capacity(1);
+        indicator.fluidbox[1] = {name = "lubricant" , amount = ratio * fluidbox_capacity }
+      end
+    end
   end
 end
 
