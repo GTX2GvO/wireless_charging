@@ -3,7 +3,7 @@ data:extend
   {
     type = "technology",
     name = "wireless-charging-induction",
-    icon = "__wireless-charging__/graphics/technology/induction.png",
+    icon = "__wireless-charging_v17__/graphics/technology/induction.png",
     icon_size = 128,
     effects =
     {
@@ -36,7 +36,7 @@ data:extend
   {
     type = "technology",
     name = "wireless-charging-high-power-induction",
-    icon = "__wireless-charging__/graphics/technology/high-power-induction.png",
+    icon = "__wireless-charging_v17__/graphics/technology/high-power-induction.png",
     icon_size = 128,
     effects =
     {
