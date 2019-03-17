@@ -3,7 +3,7 @@ data:extend
   {
     type = "item",
     name = "wireless-charging-lo-power-induction-coil",
-    icon = "__wireless-charging__/graphics/icons/lo-power-induction-coil.png",
+    icon = "__wireless-charging_v17__/graphics/icons/lo-power-induction-coil.png",
 	icon_size = 32,
     placed_as_equipment_result = "wireless-charging-lo-power-induction-coil",
     subgroup = "equipment",
@@ -13,7 +13,7 @@ data:extend
   {
     type = "item",
     name = "wireless-charging-hi-power-induction-coil",
-    icon = "__wireless-charging__/graphics/icons/hi-power-induction-coil.png",
+    icon = "__wireless-charging_v17__/graphics/icons/hi-power-induction-coil.png",
 	icon_size = 32,
     placed_as_equipment_result = "wireless-charging-hi-power-induction-coil",
     subgroup = "equipment",
@@ -23,7 +23,7 @@ data:extend
   {
     type = "item",
     name = "wireless-charging-lo-power-induction-station",
-    icon = "__wireless-charging__/graphics/icons/lo-power-induction-station.png",
+    icon = "__wireless-charging_v17__/graphics/icons/lo-power-induction-station.png",
 	icon_size = 32,
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-e[lo-power-induction-station]",
@@ -33,7 +33,7 @@ data:extend
   {
     type = "item",
     name = "wireless-charging-hi-power-induction-station",
-    icon = "__wireless-charging__/graphics/icons/hi-power-induction-station.png",
+    icon = "__wireless-charging_v17__/graphics/icons/hi-power-induction-station.png",
 	icon_size = 32,
     subgroup = "energy-pipe-distribution",
     order = "a[energy]-f[hi-power-induction-station]",
@@ -43,7 +43,7 @@ data:extend
   {
     type = "item",
     name = "wireless-charging-lo-power-induction-rail",
-    icon = "__wireless-charging__/graphics/icons/lo-power-induction-rail.png",
+    icon = "__wireless-charging_v17__/graphics/icons/lo-power-induction-rail.png",
 	icon_size = 32,
     subgroup = "transport",
     order = "a[train-system]-a[rail]-a",
@@ -53,7 +53,7 @@ data:extend
   {
     type = "item",
     name = "wireless-charging-hi-power-induction-rail",
-    icon = "__wireless-charging__/graphics/icons/hi-power-induction-rail.png",
+    icon = "__wireless-charging_v17__/graphics/icons/hi-power-induction-rail.png",
 	icon_size = 32,
     subgroup = "transport",
     order = "a[train-system]-a[rail]-b",

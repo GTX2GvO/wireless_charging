@@ -5,7 +5,7 @@ data:extend
     name = "wireless-charging-lo-power-induction-coil",
     sprite =
     {
-      filename = "__wireless-charging__/graphics/equipment/lo-power-induction-coil.png",
+      filename = "__wireless-charging_v17__/graphics/equipment/lo-power-induction-coil.png",
       width = 64,
       height = 64,
       priority = "medium"
@@ -31,7 +31,7 @@ data:extend
     name = "wireless-charging-hi-power-induction-coil",
     sprite =
     {
-      filename = "__wireless-charging__/graphics/equipment/hi-power-induction-coil.png",
+      filename = "__wireless-charging_v17__/graphics/equipment/hi-power-induction-coil.png",
       width = 96,
       height = 96,
       priority = "medium"
