@@ -100,20 +100,22 @@ indicator_tick = function()
   local indicators = global.indicators
   local charging_accumulator_grids = global.charging_accumulator_grids
   for unit, grid in pairs(global.charging_accumulator_grids) do
-    local accumulator = accumulators[unit]
-    local indicator = indicators[unit]
-    local capacity = grid.battery_capacity
-    local ratio = capacity <= 0 and 0 or grid.available_in_batteries / capacity
-    if(accumulator.valid) then
-      local accumulator_capacity = accumulator.electric_buffer_size;
-      accumulator.energy = ratio * accumulator_capacity;
-    end
-    if(indicator.valid) then
-      if(ratio <= 0) then
-        indicator.fluidbox[1] = nil;
-      else
-        local fluidbox_capacity = indicator.fluidbox.get_capacity(1);
-        indicator.fluidbox[1] = {name = "lubricant" , amount = ratio * fluidbox_capacity }
+    if(grid.valid) then
+      local accumulator = accumulators[unit]
+      local indicator = indicators[unit]
+      local capacity = grid.battery_capacity
+      local ratio = capacity <= 0 and 0 or grid.available_in_batteries / capacity
+      if(accumulator.valid) then
+        local accumulator_capacity = accumulator.electric_buffer_size;
+        accumulator.energy = ratio * accumulator_capacity;
+      end
+      if(indicator.valid) then
+        if(ratio <= 0) then
+          indicator.fluidbox[1] = nil;
+        else
+          local fluidbox_capacity = indicator.fluidbox.get_capacity(1);
+          indicator.fluidbox[1] = {name = "lubricant" , amount = ratio * fluidbox_capacity }
+        end
       end
     end
   end
