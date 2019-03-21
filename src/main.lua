@@ -323,7 +323,7 @@ function on_robot_built_entity(event)
   on_entity_created(event.created_entity)
 end
 
-function on_preplayer_mined_item(event)
+function on_pre_player_mined_item(event)
   if(rail_accumulator_types[event.entity.name]) then
     on_accumulator_mined(event.entity)
   else
