@@ -202,6 +202,10 @@ on_accumulator_mined = function(entity)
   -- Only players can pick up accumulators, robots always target the rail.
   local unit = entity.unit_number
   local rail = global.rails[unit]
+  if(rail == nil) then
+    return -- leftover non existing rail, ignore
+  end
+
   unit = rail.unit_number
   -- If the rail cannot be destroyed then a train is still standing on it and we have to restore the accumulator.
   remote.call("wireless-charging-lib", "remove-inductor", rail)
