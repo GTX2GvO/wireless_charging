@@ -51,9 +51,9 @@ script.on_init(function()
   subscribe_to_conditional_events()
 end)
 
-function on_first_tick()
+function on_load()
   subscribe_to_lib_events()
-  subscribe_to_conditional_events() -- overrides the on_tick, making sure this only runs once
+  subscribe_to_conditional_events()
 end
 
 script.on_event(defines.events.on_built_entity, on_built_entity)
@@ -61,4 +61,4 @@ script.on_event(defines.events.on_entity_died, on_entity_died)
 script.on_event(defines.events.on_pre_player_mined_item, on_pre_player_mined_item)
 script.on_event(defines.events.on_robot_built_entity, on_robot_built_entity)
 script.on_event(defines.events.on_robot_pre_mined, on_robot_pre_mined)
-script.on_event(defines.events.on_tick, on_first_tick)
+script.on_load(on_load)
