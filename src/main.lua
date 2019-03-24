@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 local charging_station_types =
 {
   ["wireless-charging-lo-power-induction-station"] = true,
@@ -44,14 +34,6 @@ local on_entity_created
 local on_entity_removed
 local on_rail_accumulator_killed
 
-function subscribe_to_conditional_events()
-  if(next(global.charging_accumulator_grids) == nil) then
-    script.on_event(defines.events.on_tick, nil)
-  else
-    script.on_event(defines.events.on_tick, on_tick)
-  end
-end
-
 -- Charging indicators
 -------------------------------------------------------------------------------
 
@@ -66,7 +48,7 @@ function on_charging_started(event)
         charging_accumulator_grids[unit] = event.grid
       end
     end
-    script.on_event(defines.events.on_tick, on_tick)
+  --  script.on_event(defines.events.on_tick, on_tick)
   end
 end
 
@@ -91,14 +73,13 @@ function on_charging_stopped(event)
     end
   end
   if(next(charging_accumulator_grids) == nil) then
-    script.on_event(defines.events.on_tick, nil)
+   -- script.on_event(defines.events.on_tick, nil)
   end
 end
 
 indicator_tick = function()
   local accumulators = global.accumulators
   local indicators = global.indicators
-  local charging_accumulator_grids = global.charging_accumulator_grids
   for unit, grid in pairs(global.charging_accumulator_grids) do
     if(grid.valid) then
       local accumulator = accumulators[unit]
