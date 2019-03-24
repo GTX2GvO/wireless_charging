@@ -1,13 +1,3 @@
-
-
-
-
-
-
-
-
-
-
 local charging_station_types =
 {
   ["wireless-charging-lo-power-induction-station"] = true,
@@ -44,14 +34,6 @@ local on_entity_created
 local on_entity_removed
 local on_rail_accumulator_killed
 
-function subscribe_to_conditional_events()
-  if(next(global.charging_accumulator_grids) == nil) then
-    script.on_event(defines.events.on_tick, nil)
-  else
-    script.on_event(defines.events.on_tick, on_tick)
-  end
-end
-
 -- Charging indicators
 -------------------------------------------------------------------------------
 
@@ -66,7 +48,7 @@ function on_charging_started(event)
         charging_accumulator_grids[unit] = event.grid
       end
     end
-    script.on_event(defines.events.on_tick, on_tick)
+  --  script.on_event(defines.events.on_tick, on_tick)
   end
 end
 
@@ -91,29 +73,30 @@ function on_charging_stopped(event)
     end
   end
   if(next(charging_accumulator_grids) == nil) then
-    script.on_event(defines.events.on_tick, nil)
+   -- script.on_event(defines.events.on_tick, nil)
   end
 end
 
 indicator_tick = function()
   local accumulators = global.accumulators
   local indicators = global.indicators
-  local charging_accumulator_grids = global.charging_accumulator_grids
   for unit, grid in pairs(global.charging_accumulator_grids) do
-    local accumulator = accumulators[unit]
-    local indicator = indicators[unit]
-    local capacity = grid.battery_capacity
-    local ratio = capacity <= 0 and 0 or grid.available_in_batteries / capacity
-    if(accumulator.valid) then
-      local accumulator_capacity = accumulator.electric_buffer_size;
-      accumulator.energy = ratio * accumulator_capacity;
-    end
-    if(indicator.valid) then
-      if(ratio <= 0) then
-        indicator.fluidbox[1] = nil;
-      else
-        local fluidbox_capacity = indicator.fluidbox.get_capacity(1);
-        indicator.fluidbox[1] = {name = "lubricant" , amount = ratio * fluidbox_capacity }
+    if(grid.valid) then
+      local accumulator = accumulators[unit]
+      local indicator = indicators[unit]
+      local capacity = grid.battery_capacity
+      local ratio = capacity <= 0 and 0 or grid.available_in_batteries / capacity
+      if(accumulator.valid) then
+        local accumulator_capacity = accumulator.electric_buffer_size;
+        accumulator.energy = ratio * accumulator_capacity;
+      end
+      if(indicator.valid) then
+        if(ratio <= 0) then
+          indicator.fluidbox[1] = nil;
+        else
+          local fluidbox_capacity = indicator.fluidbox.get_capacity(1);
+          indicator.fluidbox[1] = {name = "lubricant" , amount = ratio * fluidbox_capacity }
+        end
       end
     end
   end
@@ -200,6 +183,10 @@ on_accumulator_mined = function(entity)
   -- Only players can pick up accumulators, robots always target the rail.
   local unit = entity.unit_number
   local rail = global.rails[unit]
+  if(rail == nil) then
+    return -- leftover non existing rail, ignore
+  end
+
   unit = rail.unit_number
   -- If the rail cannot be destroyed then a train is still standing on it and we have to restore the accumulator.
   remote.call("wireless-charging-lib", "remove-inductor", rail)
@@ -321,7 +308,7 @@ function on_robot_built_entity(event)
   on_entity_created(event.created_entity)
 end
 
-function on_preplayer_mined_item(event)
+function on_pre_player_mined_item(event)
   if(rail_accumulator_types[event.entity.name]) then
     on_accumulator_mined(event.entity)
   else
