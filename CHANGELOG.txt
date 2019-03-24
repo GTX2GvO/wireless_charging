@@ -1,4 +1,12 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.5
+Date: N/A
+  CHANGES:
+    - Updated to wireless-charging-lib 0.17.4
+  FIXES:
+    - Fixed issue #9: indicator_tick: API call on invalid LuaEquipmentGrid: check entity.valid
+    - Fixed issue #4: multiplayer desyncs: restructure on_tick processing
+---------------------------------------------------------------------------------------------------
 Version: 0.17.4
 Date: N/A
   CHANGES:
