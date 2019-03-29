@@ -1,6 +1,14 @@
 ---------------------------------------------------------------------------------------------------
+Version: 0.17.6
+Date: 29. 03. 2019
+  CHANGES:
+    - Reduced "wireless-charging-induction" tech prerequisite to be in line with the tech level of the resulting items.
+    - Added dates (by approximation) to changelog
+  FIXES:
+    - TBD
+---------------------------------------------------------------------------------------------------
 Version: 0.17.5
-Date: N/A
+Date: 24. 03. 2019
   CHANGES:
     - Updated to wireless-charging-lib 0.17.4
   FIXES:
@@ -8,57 +16,57 @@ Date: N/A
     - Fixed issue #4: multiplayer desyncs: restructure on_tick processing
 ---------------------------------------------------------------------------------------------------
 Version: 0.17.4
-Date: N/A
+Date: 17. 03. 2019
   CHANGES:
     - Updated to wireless-charging-lib 0.17.3
     - Updated for 0.17 by GTX2GvO
     - Compatibility fixes by slindenau
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.3
-Date: N/A
+Date: 18. 09. 2016
   CHANGES:
     - Updated to wireless-charging-lib 0.2.5
   FIXES:
     - "Error while running event on_player_placed_equipment (ID 38) LuaEntity API call when LuaEntity was invalid." in multiplayer.
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.2
-Date: N/A
+Date: 17. 09. 2016
   FIXES:
     - broken zip structure
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.1
-Date: N/A
+Date: 16. 09. 2016
   CHANGES:
     - The low power induction coil now only takes up 2x2 slots in the equipment grid
 ---------------------------------------------------------------------------------------------------
 Version: 0.3.0
-Date: N/A
+Date: 13. 09. 2016
   CHANGES:
     - Removed accumulator from high power induction station/rail recipe
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.4
-Date: N/A
+Date: 11. 09. 2016
   CHANGES:
     - Updated to wireless-charging-lib 0.2.4
   FIXES:
     - "Error while running event on_robot_pre_mined (ID 15) wireless-charging-lib/src/main.lua:490: attempt to index field '?' (a nil value)" when a robot mines an induction rail
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.3
-Date: N/A
+Date: 09. 09. 2016
   CHANGES:
     - Updated to wireless-charging-lib 0.2.3
   FIXES:
     - "LuaEntity API call when LuaEntity was invalid. stack traceback: wireless-charging-lib/src/main.lua:496: in function 'on_entity_removed'." when loading a multiplayer game
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.2
-Date: N/A
+Date: 05. 09. 2016
   CHANGES:
     - Updated to wireless-charging-lib 0.2.2
   FIXES:
     - "Error while running the on_load: LuaEntity API call when LuaEntity was invalid." in rebuild_caches()
 ---------------------------------------------------------------------------------------------------
 Version: 0.2.1
-Date: N/A
+Date: 31. 08. 2016
   CHANGES:
     - Updated to wireless-charging-lib 0.2.1
     - Add homepage field to info.json
