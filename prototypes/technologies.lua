@@ -20,7 +20,7 @@ data:extend
         recipe = "wireless-charging-lo-power-induction-station",
       },
     },
-    prerequisites = {"advanced-electronics-2", "electric-energy-distribution-1", "modular-armor"},
+    prerequisites = {"advanced-electronics", "electric-energy-distribution-1", "modular-armor"},
     unit =
     {
       count = 150,
